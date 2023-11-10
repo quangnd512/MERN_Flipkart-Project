@@ -1,6 +1,5 @@
 // Lấy data từ models/user
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
 
 exports.signup = async (req, res) => {
     try {
@@ -84,14 +83,6 @@ exports.signin = async (req, res) => {
         res.status(500).json({ message: 'Something went wrong' });
     }
 };
-
-// Xác thực thông tin người dùng
-exports.requireSignin = (req, res, next) => {
-    const token = req.headers.authorization.split(" ")[1];
-    const user = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = user;
-    next();
-}
 
 
 
