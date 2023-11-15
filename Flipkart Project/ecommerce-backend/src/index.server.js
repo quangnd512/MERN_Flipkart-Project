@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin/auth');
 const categoryRouters = require('./routes/category');
+const productRouters = require('./routes/product');
 
 
 env.config();
@@ -28,6 +29,7 @@ app.use('/api', adminRoutes);
 
 // Chuyển hướng đến category routes
 app.use('/api', categoryRouters);
+app.use('/api', productRouters);
 
 app.listen(process.env.PORT, () => {
     console.log(`Port: ${process.env.PORT}`);
